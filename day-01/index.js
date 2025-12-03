@@ -21,23 +21,48 @@ input.forEach(line => {
 
 // process the reports
 
+// puzzle 1
+
+// rotations.forEach(rotation => {
+//   const direction = rotation.charAt(0);
+//   const steps = parseInt(rotation.slice(1), 10);
+
+//   // update the current position based on the rotation
+//   if (direction === "L") {
+//     position -= steps;
+//   } else if (direction === "R") {
+//     position += steps;
+//   }
+
+//   // wrap around the circular dial
+//   position = ((position % 100) + 100) % 100;
+
+//   // check if the current position is a zero
+//   if (position === 0) {
+//     password += 1;
+//   }
+// });
+
+// puzzle 2
+
 rotations.forEach(rotation => {
   const direction = rotation.charAt(0);
   const steps = parseInt(rotation.slice(1), 10);
 
-  // update the current position based on the rotation
-  if (direction === "L") {
-    position -= steps;
-  } else if (direction === "R") {
-    position += steps;
-  }
+  for (let i = 0; i < steps; i++) {
+    if (direction === "L") {
+      position--;
+    } else if (direction === "R") {
+      position++;
+    }
 
-  // wrap around the circular dial
-  position = ((position % 100) + 100) % 100;
+    // wrap around the circular dial
+    position = ((position % 100) + 100) % 100;
 
-  // check if the current position is a zero
-  if (position === 0) {
-    password += 1;
+    // If we just moved over 0 (from 99 to 0 or from 1 to 0), increment password
+    if (position === 0) {
+      password += 1;
+    }
   }
 });
 
