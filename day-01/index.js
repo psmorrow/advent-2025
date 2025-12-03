@@ -19,7 +19,7 @@ input.forEach(line => {
   rotations.push(rotation);
 });
 
-// process the reports
+// process the rotations
 
 // puzzle 1
 
